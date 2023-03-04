@@ -113,7 +113,7 @@
       <td style="max-width:25px;overflow: hidden;">phone</td>
 	    <td>
         <div v-if="selectedUser!==user.email && selectedUser ===''" ><button class="ed" @click="fieldHydrate(user,'editButtonCLicked')">Edit</button></div>
-        <div v-else-if="selectedUser!=='' && selectedUser==user.email" ><button class="ed" @click="selectedUserToggle()">cancel</button></div>
+        <div v-else-if="selectedUser!=='' && selectedUser==user.email && !viewMode"><button class="ed" @click="selectedUserToggle()">cancel</button></div>
       </td>
 	    <td><button class="ed" style="background:#f00;" @click="deleteUser(user.email)">Delete</button></td>
 	    <td>
@@ -275,6 +275,7 @@ function viewUserDetails(user){
   viewMode.value = true
 }
 function toggleViewMode(){
+  selectedUser.value = ""
   viewMode.value = false
   clearFields()
 }
